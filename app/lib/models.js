@@ -1,5 +1,25 @@
 import mongoose from "mongoose";
 
+const betSchema = new mongoose.Schema(
+  {
+    drawNumber: {
+      type: String,
+      required: true,
+      unique: true,
+    },    
+    lastThreeDigits: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    secondAndThirdDigits: {
+      type: String,
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
+
 const userSchema = new mongoose.Schema(
   {
     username: {
@@ -252,10 +272,11 @@ export const Bookaccept = mongoose.models.Bookaccept || mongoose.model("Bookacce
 export const Booksend = mongoose.models.Booksend || mongoose.model("Booksend", booksendSchema);
 export const User = mongoose.models.User || mongoose.model("User", userSchema);
 export const Product =
-  mongoose.models.Product || mongoose.model("Product", productSchema);
+mongoose.models.Product || mongoose.model("Product", productSchema);
 export const Product2 =
-  mongoose.models.Product2 || mongoose.model("Product2", product2Schema);
+mongoose.models.Product2 || mongoose.model("Product2", product2Schema);
 export const Palad =
-  mongoose.models.Palad || mongoose.model("Palad", paladSchema);
+mongoose.models.Palad || mongoose.model("Palad", paladSchema);
   export const Saraban =
-  mongoose.models.Saraban || mongoose.model("Saraban", sarabanSchema);
+mongoose.models.Saraban || mongoose.model("Saraban", sarabanSchema);
+mongoose.models.Bet || mongoose.model("Bet", betSchema);
