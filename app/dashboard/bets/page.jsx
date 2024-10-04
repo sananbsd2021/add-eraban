@@ -57,7 +57,7 @@ const BetPage = async ({ searchParams }) => {
                     </button>
                   </Link>
                   <form action={deleteBet}>
-                    <input type="hidden" name="id" value={product.id} />
+                    <input type="hidden" name="id" value={bet.id} />
                     <button className={`${styles.button} ${styles.delete}`}>
                       Delete
                     </button>
