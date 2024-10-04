@@ -6,8 +6,39 @@ import {
   Bookaccept,
   Booksetbid,
   Palad,
+  Bet,
 } from "./models";
 import { connectToDB } from "./utils";
+
+export const fetchBets = async (q, page) => {
+  console.log(q);
+  const regex = new RegExp(q, "i");
+
+  const ITEM_PER_PAGE = 10;
+
+  try {
+    connectToDB();
+    const count = await Bet.find({ drawNumber: { $regex: regex } }).count();
+    const draws = await Bet.find({ drawNumber: { $regex: regex } })
+      .limit(ITEM_PER_PAGE)
+      .skip(ITEM_PER_PAGE * (page - 1));
+    return { count, draws };
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch products!");
+  }
+};
+
+export const fetchBet = async (id) => {
+  try {
+    connectToDB();
+    const product = await Bet.findById(id);
+    return product;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch product!");
+  }
+};
 
 export const fetchUsers = async (q, page) => {
   const regex = new RegExp(q, "i");
