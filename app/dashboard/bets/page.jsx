@@ -42,16 +42,15 @@ const BetPage = async ({ searchParams }) => {
                     height={40}
                     className={styles.productImage}
                   />
-                  {bet.title}
+                  {bet.drawNumber}
                 </div>
               </td>
-              <td>{bet.desc}</td>
-              <td>${bet.price}</td>
+              <td>{bet.lastThreeDigits}</td>
+              <td>${bet.secondAndThirdDigits}</td>
               <td>{bet.createdAt?.toString().slice(4, 16)}</td>
-              <td>{bet.stock}</td>
-              <td>
+                 <td>
                 <div className={styles.buttons}>
-                  <Link href={`/dashboard/bets/${product.id}`}>
+                  <Link href={`/dashboard/bets/${bet.id}`}>
                     <button className={`${styles.button} ${styles.view}`}>
                       View
                     </button>
